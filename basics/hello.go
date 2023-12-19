@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // CaluclteWorkingCarsPerHour take two args and return a float
 func CalculateWorkingCarsPerHour(productionRate int, successRate float64) float64 {
@@ -52,11 +55,12 @@ func CanFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwake, petDogIsPres
 	return false
 }
 
-func main() {
-	var knightIsAwake = false
-	var archerIsAwake = true
-	var prisonerIsAwake = false
-	var petDogIsPresent = false
-	fmt.Println(CanFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwake, petDogIsPresent))
+// WelcomeMessage returns a welcome message for the customer.
+func WelcomeMessage(customer string) string {
+	customerToUpper := strings.ToUpper(customer)
+	return "Welcome to the Tech Palace, " + customerToUpper
+}
 
+func main() {
+	fmt.Println(WelcomeMessage("Judy"))
 }

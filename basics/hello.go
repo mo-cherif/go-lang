@@ -70,9 +70,17 @@ func AddBorder(welcomeMsg string, numStarsPerLine int) string {
 
 // CleanupMessage cleans up an old marketing message.
 func CleanupMessage(oldMsg string) string {
-	panic("Please implement the CleanupMessage() function")
+	removeAsterix := strings.Replace(oldMsg, "*", " ", 100)
+	return strings.TrimSpace(removeAsterix)
 }
 
 func main() {
-	fmt.Println(WelcomeMessage("JUDY"))
+
+	message := `
+**************************
+*    BUY NOW, SAVE 10%   *
+**************************
+`
+
+	fmt.Println(CleanupMessage(message))
 }

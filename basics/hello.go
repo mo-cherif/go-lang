@@ -74,13 +74,43 @@ func CleanupMessage(oldMsg string) string {
 	return strings.TrimSpace(removeAsterix)
 }
 
+// NeedsLicense determines whether a license is needed to drive a type of vehicle. Only "car" and "truck" require a license.
+func NeedsLicense(kind string) bool {
+	if kind == "car" {
+		return true
+	} else if kind == "truck" {
+		return true
+	}
+	return false
+}
+
+// ChooseVehicle recommends a vehicle for selection. It always recommends the vehicle that comes first in lexicographical order.
+func ChooseVehicle(option1, option2 string) string {
+	if option1 < option2 {
+		return option1 + " is clearly the better choice."
+	}
+
+	return option2 + " is clearly the better choice."
+}
+
+// CalculateResellPrice calculates how much a vehicle can resell for at a certain age.
+// si orginalPrice -> 100%
+//
+//	x            -> 80%
+func CalculateResellPrice(originalPrice, age float64) float64 {
+	if age < 3 {
+		cost := (originalPrice * 80) / 100
+		return cost
+	}
+	if age > 3 && age < 10 {
+		cost := (originalPrice * 70) / 100
+		return cost
+	}
+	cost := (originalPrice * 50) / 100
+	return cost
+
+}
+
 func main() {
-
-	message := `
-**************************
-*    BUY NOW, SAVE 10%   *
-**************************
-`
-
-	fmt.Println(CleanupMessage(message))
+	fmt.Println(CalculateResellPrice(1000, 15))
 }

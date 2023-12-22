@@ -51,7 +51,6 @@ func CanFreePrisoner(knightIsAwake, archerIsAwake, prisonerIsAwake, petDogIsPres
 	if prisonerIsAwake && !archerIsAwake && !knightIsAwake || petDogIsPresent && !archerIsAwake {
 		return true
 	}
-
 	return false
 }
 
@@ -75,14 +74,6 @@ func CleanupMessage(oldMsg string) string {
 }
 
 // NeedsLicense determines whether a license is needed to drive a type of vehicle. Only "car" and "truck" require a license.
-func NeedsLicense(kind string) bool {
-	if kind == "car" {
-		return true
-	} else if kind == "truck" {
-		return true
-	}
-	return false
-}
 
 // ChooseVehicle recommends a vehicle for selection. It always recommends the vehicle that comes first in lexicographical order.
 func ChooseVehicle(option1, option2 string) string {
@@ -111,6 +102,27 @@ func CalculateResellPrice(originalPrice, age float64) float64 {
 
 }
 
+// Welcome greets a person by name.
+func Welcome(name string) string {
+	return fmt.Sprintf("Welcome to my party, %s!", name)
+}
+
+// HappyBirthday wishes happy birthday to the birthday person and exclaims their age.
+func HappyBirthday(name string, age int) string {
+	return fmt.Sprintf("Happy birthday %s! You are now %d years old!", name, age)
+}
+
+// AssignTable assigns a table to each guest.
+func AssignTable(name string, table int, neighbor, direction string, distance float64) string {
+	var helper string
+	if table < 10 {
+		helper = "00"
+	} else if table < 100 {
+		helper = "0"
+	}
+	return fmt.Sprintf("Welcome to my party, %s!\nYou have been assigned to table %s%d. Your table is %s, exactly %.1f meters from here.\nYou will be sitting next to %s.", name, helper, table, direction, distance, neighbor)
+}
+
 func main() {
-	fmt.Println(CalculateResellPrice(1000, 15))
+	fmt.Println(AssignTable("Christiane", 2, "Frank", "on the left", 23.7834298))
 }

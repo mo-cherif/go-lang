@@ -1,9 +1,5 @@
 # go-lang
 
-In my journey of learning go
+In my journey of learning go on exercism
 
-Chapter 1:
-Basics
-Go is statically typed compiled programming language
-There's three major language feature in go:
-Package , Function and variables
+
